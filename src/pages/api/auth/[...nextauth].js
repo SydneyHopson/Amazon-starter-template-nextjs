@@ -1,7 +1,7 @@
-import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import NextAuth from 'next-auth';
+import GoogleProvider from 'next-auth/providers/google';
 
-export const authOptions = {
+const authOptions = {
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
@@ -10,7 +10,9 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
-  // Add other NextAuth.js options here, if necessary
+  // Add a secret to enable encrypted cookies and secure sessions
+  secret: process.env.NEXTAUTH_SECRET,
+  // Optional: Define additional NextAuth.js options here
 };
 
 export default NextAuth(authOptions);
